@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   #login {
+    max-width: 425px;
+    margin: auto;
     animation: FadeIn 0.7s forwards;
 
     &.out {

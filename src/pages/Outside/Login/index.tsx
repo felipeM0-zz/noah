@@ -1,17 +1,52 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import Switch from "react-switch";
 // UTILS
+import api from "../../../utils/api";
+import { msgError, msgSuccess } from "../../../utils/toastLogin";
 import { checkEmail, checkPass } from "../../../utils/checkInputsOutside";
 // STYLES
 import { Container } from "./styles";
 
 const Login = (props: { setShowCreate: (arg0: boolean) => void }) => {
+  const route = useHistory();
+
   const [conected, setConected] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleEnter = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleEnter = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (!checkEmail(email)[2] && !checkPass(password)[2]) {
+      setLoading(true);
+
+      let response = await api.get("/felipeM0/big-boom/main/src/data/users.json");
+      for (let i = 0; i < response.data.length; i++) {
+        if (response.data[i].email === email) {
+          if (response.data[i].pass === password) {
+            return msgSuccess(`${response.data[i].name}`).then(() => {
+              let elem = document.getElementById("login")?.parentElement?.parentElement;
+              elem?.classList.add("main");
+              elem?.addEventListener("animationend", () => {
+                route.push("/main");
+              });
+            });
+          } else {
+            return msgError("Verifique sua senha").then(() => {
+              setLoading(false);
+            });
+          }
+        } else {
+          return msgError("Email não encontrado").then(() => {
+            setLoading(false);
+          });
+        }
+      }
+    } else {
+      return msgError("Há campos inválidos");
+    }
   };
 
   const changeScreen = () => {
@@ -35,6 +70,7 @@ const Login = (props: { setShowCreate: (arg0: boolean) => void }) => {
             <input
               type="email"
               value={email}
+              name="Email"
               className={`${checkEmail(email)[1]}`}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -46,6 +82,7 @@ const Login = (props: { setShowCreate: (arg0: boolean) => void }) => {
             <input
               type="password"
               value={password}
+              name="Senha"
               className={`${checkPass(password)[1]}`}
               onChange={(e) => setPassword(e.target.value)}
             />
@@ -68,7 +105,9 @@ const Login = (props: { setShowCreate: (arg0: boolean) => void }) => {
 
           <button
             type="submit"
-            disabled={(checkEmail(email)[2] || checkPass(password)[2]) === true}
+            disabled={
+              (checkEmail(email)[2] || checkPass(password)[2] || loading) === true
+            }
           >
             <span>Entrar</span>
           </button>

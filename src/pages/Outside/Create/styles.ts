@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   #create {
+    max-width: 425px;
+    margin: auto;
     animation: FadeIn 0.7s forwards;
 
     &.out {
@@ -9,7 +11,7 @@ export const Container = styled.div`
     }
 
     > p {
-      margin-top: 3rem;
+      margin-top: 1.5rem;
       font-size: 3rem;
       font-weight: bold;
       text-shadow: 2px 2px 2px #73737d;
