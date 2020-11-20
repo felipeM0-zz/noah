@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import Switch from "react-switch";
-
+// UTILS
+import { checkEmail, checkPass } from "../../../utils/checkInputsOutside";
+// STYLES
 import { Container } from "./styles";
 
-const Login = (props: { setShowCreate: (arg0: boolean) => void; }) => {
+const Login = (props: { setShowCreate: (arg0: boolean) => void }) => {
   const [conected, setConected] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleEnter = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -23,13 +27,30 @@ const Login = (props: { setShowCreate: (arg0: boolean) => void; }) => {
     <Container>
       <div id="login">
         <p>Entrar</p>
-        <span>Entre com seus dados apresentados no momento do cadastro.</span>
+        <span>Entre com seus dados inseridos no momento do cadastro.</span>
 
         <form onSubmit={(e) => handleEnter(e)}>
-          <span>Seu email</span>
-          <input type="email" />
-          <span>Sua senha</span>
-          <input type="password" />
+          <div>
+            <span>Seu email</span>
+            <input
+              type="email"
+              value={email}
+              className={`${checkEmail(email)[1]}`}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <span>{checkEmail(email)[0]}</span>
+          </div>
+
+          <div>
+            <span>Sua senha</span>
+            <input
+              type="password"
+              value={password}
+              className={`${checkPass(password)[1]}`}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <span>{checkPass(password)[0]}</span>
+          </div>
 
           <label>
             <Switch
@@ -45,7 +66,10 @@ const Login = (props: { setShowCreate: (arg0: boolean) => void; }) => {
             <span>Manter-me conectado</span>
           </label>
 
-          <button type="submit">
+          <button
+            type="submit"
+            disabled={(checkEmail(email)[2] || checkPass(password)[2]) === true}
+          >
             <span>Entrar</span>
           </button>
 

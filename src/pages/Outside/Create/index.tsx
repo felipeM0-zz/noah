@@ -1,8 +1,14 @@
-import React from "react";
-
+import React, { useState } from "react";
+// UTILS
+import { checkNames, checkEmail } from "../../../utils/checkInputsOutside";
+// STYLES
 import { Container } from "./styles";
 
-const Create = (props: { setShowCreate: (arg0: boolean) => void; }) => {
+const Create = (props: { setShowCreate: (arg0: boolean) => void }) => {
+  const [firstName, setFirstName] = useState("");
+  const [secondName, setSecondName] = useState("");
+  const [email, setEmail] = useState("");
+
   const handleEnter = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
   };
@@ -26,19 +32,49 @@ const Create = (props: { setShowCreate: (arg0: boolean) => void; }) => {
           <div>
             <div>
               <span>Primeiro nome</span>
-              <input type="text" />
+              <input
+                type="text"
+                value={firstName.trim()}
+                placeholder="João"
+                className={`${checkNames(firstName)[1]}`}
+                onChange={(e) => setFirstName(e.target.value)}
+              />
+              <p>{checkNames(firstName)[0]}</p>
             </div>
 
             <div>
               <span>Segundo nome</span>
-              <input type="text" />
+              <input
+                type="text"
+                value={secondName.trim()}
+                placeholder="Paulo"
+                className={`${checkNames(secondName)[1]}`}
+                onChange={(e) => setSecondName(e.target.value)}
+              />
+              <p>{checkNames(secondName)[0]}</p>
             </div>
           </div>
 
-          <span>Email válido</span>
-          <input type="email" />
+          <div>
+            <span>Email</span>
+            <input
+              type="email"
+              value={email}
+              placeholder="usuario@hotmail.com"
+              className={`${checkEmail(email)[1]}`}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <span>{checkEmail(email)[0]}</span>
+          </div>
 
-          <button type="submit">
+          <button
+            type="submit"
+            disabled={
+              (checkNames(firstName)[2] ||
+                checkNames(secondName)[2] ||
+                checkEmail(email)[2]) === true
+            }
+          >
             <span>Continuar</span>
           </button>
         </form>

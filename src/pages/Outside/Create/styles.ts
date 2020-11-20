@@ -20,13 +20,17 @@ export const Container = styled.div`
       display: flex;
       flex-direction: column;
 
-      > div {
+      > div:nth-child(1) {
         display: flex;
         flex-direction: row;
-        margin-bottom: 1.5rem;
+        margin-bottom: 0.2rem;
 
-        > div {
-          > input {
+        div {
+          span:first-child {
+            font-size: 0.8rem;
+          }
+
+          input {
             width: 100%;
             border: none;
             height: 2.5rem;
@@ -34,10 +38,14 @@ export const Container = styled.div`
             padding: 0.5rem;
             margin-top: 0.2rem;
             transition: all 0.2s;
+          }
 
-            :focus {
-              box-shadow: 2px 2px 2px #73737d;
-            }
+          p:last-child {
+            margin-top: 0.1rem;
+            font-size: 0.8rem;
+            text-align: right;
+            color: #f27474;
+            height: 20px;
           }
         }
 
@@ -58,21 +66,32 @@ export const Container = styled.div`
         }
       }
 
-      > span {
-        margin: 0.2rem 0;
-      }
-
-      > input {
-        border: none;
-        outline: none;
-        height: 2.5rem;
+      > div:nth-child(2) {
+        display: flex;
+        flex-direction: column;
         margin-bottom: 2rem;
-        border-radius: 4px;
-        padding: 0.5rem;
-        transition: all 0.2s;
 
-        :focus {
-          box-shadow: 2px 2px 3px #73737d;
+        span:first-child {
+          margin: 0.2rem 0;
+          font-size: 0.8rem;
+        }
+
+        input {
+          border: none;
+          outline: none;
+          height: 2.5rem;
+
+          border-radius: 4px;
+          padding: 0.5rem;
+          transition: all 0.2s;
+        }
+
+        span:last-child {
+          margin-top: 0.1rem;
+          font-size: 0.8rem;
+          text-align: right;
+          color: #f27474;
+          height: 20px;
         }
       }
 
@@ -84,7 +103,7 @@ export const Container = styled.div`
         border: 1px solid var(--color-secundary);
         height: 3.3rem;
         cursor: pointer;
-        transition: all 0.1s;
+        transition: all 0.5s !important;
 
         span {
           font-weight: bold;
@@ -93,6 +112,17 @@ export const Container = styled.div`
 
         :active {
           transform: scale(0.95, 0.95);
+        }
+
+        :disabled {
+          background: rgba(255, 255, 255, 0.1);
+          border: none;
+          pointer-events: none;
+
+          span {
+            color: rgba(255, 255, 255, 0.1);
+            font-weight: normal;
+          }
         }
       }
     }
