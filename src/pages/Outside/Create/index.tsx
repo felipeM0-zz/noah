@@ -1,26 +1,29 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 // UTILS
 import { checkNames, checkEmail } from "../../../utils/checkInputsOutside";
-import { msgError, msgSuccessCreate } from "../../../utils/toastLogin";
+import { msgError, msgLoading } from "../../../utils/swalAlerts";
+// CONTEXTS
+import ContextRegister from "../../../contexts/ContextRegister";
 // STYLES
 import { Container } from "./styles";
 
 const Create = (props: { setShowCreate: (arg0: boolean) => void }) => {
   const route = useHistory();
+  const RegContext = useContext(ContextRegister);
 
-  const [firstName, setFirstName] = useState("");
-  const [secondName, setSecondName] = useState("");
-  const [email, setEmail] = useState("");
+  const RegProp = RegContext.cliente.prop;
+  const RegEmp = RegContext.cliente.emp;
+
   const [loading, setLoading] = useState(false);
 
   const handleEnter = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (
-      !checkNames(firstName)[2] ||
-      !checkNames(secondName)[2] ||
-      !checkEmail(email)[2] ||
+      !checkNames(RegProp.nome.val)[1] ||
+      !checkNames(RegProp.sobrenome.val)[1] ||
+      !checkEmail(RegProp.nome.val)[1] ||
       !loading
     ) {
       setLoading(true);
@@ -28,12 +31,12 @@ const Create = (props: { setShowCreate: (arg0: boolean) => void }) => {
       let elem = document.getElementById("create")?.parentElement?.parentElement;
       elem?.classList.add("main");
       elem?.addEventListener("animationend", () => {
-        msgSuccessCreate("Estamos no caminho certo ...").then(() => {
+        msgLoading("", "Só mais alguns dados...", 2000).then(() => {
           route.push("/register");
         });
       });
     } else {
-      msgError("Há campos inválidos!").then(() => {
+      msgError("", "Há campos inválidos!", 2000).then(() => {
         setLoading(false);
       });
     }
@@ -61,12 +64,19 @@ const Create = (props: { setShowCreate: (arg0: boolean) => void }) => {
               <input
                 type="text"
                 name="Primeiro Nome"
-                value={firstName.trim()}
+                value={RegProp.nome.val.trim()}
                 placeholder="João"
-                className={`${checkNames(firstName)[1]}`}
-                onChange={(e) => setFirstName(e.target.value)}
+                onChange={(e) =>
+                  RegContext.setCliente({
+                    prop: {
+                      ...RegProp,
+                      nome: { val: e.target.value, id: RegProp.nome.id },
+                    },
+                    emp: { ...RegEmp },
+                  })
+                }
               />
-              <p>{checkNames(firstName)[0]}</p>
+              <p>{checkNames(RegProp.nome.val)[0]}</p>
             </div>
 
             <div>
@@ -74,12 +84,19 @@ const Create = (props: { setShowCreate: (arg0: boolean) => void }) => {
               <input
                 type="text"
                 name="Segundo nome"
-                value={secondName.trim()}
+                value={RegProp.sobrenome.val.trim()}
                 placeholder="Paulo"
-                className={`${checkNames(secondName)[1]}`}
-                onChange={(e) => setSecondName(e.target.value)}
+                onChange={(e) =>
+                  RegContext.setCliente({
+                    prop: {
+                      ...RegProp,
+                      sobrenome: { val: e.target.value, id: RegProp.sobrenome.id },
+                    },
+                    emp: { ...RegEmp },
+                  })
+                }
               />
-              <p>{checkNames(secondName)[0]}</p>
+              <p>{checkNames(RegProp.sobrenome.val)[0]}</p>
             </div>
           </div>
 
@@ -87,21 +104,28 @@ const Create = (props: { setShowCreate: (arg0: boolean) => void }) => {
             <span>Email</span>
             <input
               type="email"
-              value={email}
+              value={RegProp.email.val}
               name="Email"
               placeholder="usuario@hotmail.com"
-              className={`${checkEmail(email)[1]}`}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) =>
+                RegContext.setCliente({
+                  prop: {
+                    ...RegProp,
+                    email: { val: e.target.value, id: RegProp.email.id },
+                  },
+                  emp: { ...RegEmp },
+                })
+              }
             />
-            <span>{checkEmail(email)[0]}</span>
+            <span>{checkEmail(RegProp.email.val)[0]}</span>
           </div>
 
           <button
             type="submit"
             disabled={
-              (checkNames(firstName)[2] ||
-                checkNames(secondName)[2] ||
-                checkEmail(email)[2] ||
+              (checkNames(RegProp.nome.val)[1] ||
+                checkNames(RegProp.sobrenome.val)[1] ||
+                checkEmail(RegProp.email.val)[1] ||
                 loading) === true
             }
           >

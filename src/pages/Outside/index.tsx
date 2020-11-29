@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-
+// COMPONENTS
 import Login from "./Login";
 import Create from "./Create";
-
+// IMAGES
 import imgLogo from "../../images/logo.png";
-
+// STYLES
 import { Container } from "./styles";
 
 const Outside = () => {
