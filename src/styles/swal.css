@@ -13,12 +13,29 @@
   color: var(--color-secundary);
 }
 
+.swal2-popup.swal2-modal .swal2-actions {
+  margin: 0.5rem auto 0;
+}
+
+.swal2-popup.swal2-modal .swal2-actions.swal2-loading .swal2-loader {
+  border-color: var(--color-secundary) transparent var(--color-secundary) transparent;
+}
+
 .swal2-popup.swal2-modal .swal2-actions .swal2-confirm {
-  width: 60px;
-  height: 30px;
-  padding: 0;
+  width: auto;
+  height: auto;
+  padding: 8px 13px;
   background: var(--color-secundary);
   color: var(--color-primary-darker);
+  margin-bottom: 0;
+}
+
+.swal2-popup.swal2-modal .swal2-actions .swal2-cancel {
+  width: auto;
+  height: auto;
+  padding: 8px 13px;
+  background: var(--color-primary);
+  color: var(--color-secundary);
   margin-bottom: 0;
 }
 
@@ -31,10 +48,6 @@
 .swal2-popup.swal2-data-loading .swal2-content {
   padding: 0;
   color: var(--color-secundary);
-}
-
-.swal2-popup.swal2-data-loading .swal2-loading .swal2-loader {
-  border-color: var(--color-secundary) transparent var(--color-secundary) transparent;
 }
 
 .swal2-popup.swal2-data-loading .swal2-header {

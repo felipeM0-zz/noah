@@ -119,7 +119,7 @@ const Register = () => {
           }}
           disabled={checkSend}
         >
-          <span>Prosseguir</span>
+          <span>Enviar</span>
           <BsArrowRight />
         </button>
       </div>

@@ -3,7 +3,13 @@ import { useHistory } from "react-router-dom";
 import Switch from "react-switch";
 // UTILS
 import api from "../../../utils/api";
-import { msgError, msgSuccess } from "../../../utils/swalAlerts";
+import {
+  closeAlert,
+  msgError,
+  msgLoading,
+  msgSuccess,
+  RecoverPass,
+} from "../../../utils/swalAlerts";
 import { checkEmail, checkPass } from "../../../utils/checkInputsOutside";
 // STYLES
 import { Container } from "./styles";
@@ -21,12 +27,18 @@ const Login = (props: { setShowCreate: (arg0: boolean) => void }) => {
 
     if (!checkEmail(email)[1] || !checkPass(password)[1] || !loading) {
       setLoading(true);
+      msgLoading("", "Verificando informações...", 0);
 
       let response = await api.get("/felipeM0/big-boom/main/src/data/users.json");
-      for (let i = 0; i < response.data.length; i++) {
-        if (response.data[i].email === email) {
-          if (response.data[i].pass === password) {
-            return msgSuccess("", `${response.data[i].name}`, 2000, false).then(() => {
+      let count = 0;
+
+      for await (const dt of response.data) {
+        if (dt.email === email) {
+          count++;
+          closeAlert();
+
+          if (dt.pass === password) {
+            return msgSuccess("", `Bem vindo(a), ${dt.name}`, 2000, false).then(() => {
               let elem = document.getElementById("login")?.parentElement?.parentElement;
               elem?.classList.add("main");
               elem?.addEventListener("animationend", () => {
@@ -38,11 +50,14 @@ const Login = (props: { setShowCreate: (arg0: boolean) => void }) => {
               setLoading(false);
             });
           }
-        } else {
-          return msgError("Erro", "Email não encontrado", 3000).then(() => {
-            setLoading(false);
-          });
         }
+      }
+
+      if (count <= 0) {
+        closeAlert();
+        return msgError("Erro", "Email não encontrado", 3000).then(() => {
+          setLoading(false);
+        });
       }
     } else {
       return msgError("Erro", "Há campos inválidos", 3000);
@@ -116,7 +131,13 @@ const Login = (props: { setShowCreate: (arg0: boolean) => void }) => {
               <span>Ainda não tem conta?</span>
               <span onClick={() => changeScreen()}>Crie uma!</span>
             </div>
-            <span>Esqueci minha senha</span>
+            <span
+              onClick={() => {
+                RecoverPass(email);
+              }}
+            >
+              Esqueci minha senha
+            </span>
           </div>
         </form>
       </div>

@@ -19,10 +19,10 @@ const defaultEmp = {
   nome_fantasia: { val: "", id: "Nome fantasia" },
   cnpj: { val: "", id: "CNPJ" },
   insc_estadual: { val: "", id: "Inscrição estadual" },
+  cep: { val: "", id: "CEP" },
   rua: { val: "", id: "Av/Rua" },
   numero: { val: "", id: "Número" },
   bairro: { val: "", id: "Bairro" },
-  cep: { val: "", id: "CEP" },
   cidade: { val: "", id: "Cidade" },
   uf: { val: "", id: "UF" },
 };
