@@ -42,7 +42,7 @@ const Login = (props: { setShowCreate: (arg0: boolean) => void }) => {
               let elem = document.getElementById("login")?.parentElement?.parentElement;
               elem?.classList.add("main");
               elem?.addEventListener("animationend", () => {
-                route.push("/main");
+                route.push("/dashboard");
               });
             });
           } else {

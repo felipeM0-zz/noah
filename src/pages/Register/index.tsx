@@ -8,7 +8,7 @@ import { BsPencil, BsArrowRight } from "react-icons/bs";
 // UTILS
 import ChooseInputModal from "./utils/inputsRegister";
 // DEFAULTS
-import { defaultCEP, defaultProp, defaultEmp } from "./utils/defaults/defaultsRegister";
+import { defaultCEP, defaultProp, defaultEmp } from "../../utils/defaults/defaultsRegister";
 // ALERTS
 import { msgSuccess } from "../../utils/swalAlerts";
 // STYLES

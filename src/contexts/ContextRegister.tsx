@@ -3,12 +3,12 @@ import React from "react";
 import {
   PropsProp,
   PropsEmp,
-} from "../pages/Register/utils/interfaces/interfacesRegister";
+} from "../utils/interfaces/interfacesRegister";
 // DEFAULTS
 import {
   defaultProp,
   defaultEmp,
-} from "../pages/Register/utils/defaults/defaultsRegister";
+} from "../utils/defaults/defaultsRegister";
 
 interface PropsSetState {
   prop: PropsProp;

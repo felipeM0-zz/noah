@@ -14,9 +14,9 @@ import {
   getDataCEP,
 } from "../../../utils/checkInputsOutside";
 // DEFAULTS
-import { defaultCEP } from "./defaults/defaultsRegister";
+import { defaultCEP } from "../../../utils/defaults/defaultsRegister";
 // INTERFACES
-import { PropsCEP } from "./interfaces/interfacesRegister";
+import { PropsCEP } from "../../../utils/interfaces/interfacesRegister";
 // ALERTS
 import { closeAlert, msgError, msgLoading } from "../../../utils/swalAlerts";
 
