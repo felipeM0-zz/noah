@@ -2,9 +2,9 @@ import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
   :root {
-    --color-primary: #2d2d34;
-    --color-primary-darker: #1e1e21;
-    --color-secundary: #f3f3f4;
+     --color-primary: ${(props) => props.theme.colors.primary};
+     --color-primary-darker: ${(props) => props.theme.colors.primary_darker};
+     --color-secundary: ${(props) => props.theme.colors.primary_text};
   }
   
   * {

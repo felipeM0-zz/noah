@@ -1,15 +1,23 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
+
 // DEFAULTS
 import { defaultOptions } from "../../utils/defaults/defaultOptions";
-// ICONS
-import { MdSettings } from "react-icons/md";
+import { HiSun, HiMoon } from "react-icons/hi";
 
 // STYLES
-import Container from "./styles";
+import { Container, Switcher } from "./styles";
+
+import ContextTheme from "../../contexts/ContextTheme";
 
 const Sidebar = () => {
   const loc = useLocation().pathname;
+  const ContTheme = useContext(ContextTheme);
+
+  const changeTheme = () => {
+    ContTheme.setTheme({ checked: !ContTheme.theme.checked });
+    localStorage.setItem("theme", JSON.stringify(!ContTheme.theme.checked));
+  };
 
   return (
     <Container>
@@ -23,7 +31,12 @@ const Sidebar = () => {
         })}
       </div>
       <div>
-        <MdSettings />
+        <Switcher
+          onChange={() => changeTheme()}
+          checked={ContTheme.theme.checked}
+          checkedIcon={<HiSun />}
+          uncheckedIcon={<HiMoon />}
+        />
       </div>
     </Container>
   );

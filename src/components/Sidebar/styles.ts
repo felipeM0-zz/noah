@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Switch from "react-switch";
 
 const Container = styled.div`
   width: 53px;
@@ -9,6 +10,7 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
 
   > div:nth-child(1) {
     display: flex;
@@ -20,8 +22,8 @@ const Container = styled.div`
       align-items: center;
       text-decoration: none;
       padding: 0.7rem;
-      color: rgba(255, 255, 255, 0.4);
-      margin: 0.5rem 0;
+      color: rgba(255, 255, 255, 0.25);
+      margin: 0.3rem 0;
       font-size: 1.1rem;
       transition: all 0.3s;
 
@@ -34,20 +36,48 @@ const Container = styled.div`
       }
 
       &.active {
-        border-right: 2px solid var(--color-secundary);
         color: var(--color-secundary);
       }
     }
   }
 
   > div:nth-child(2) {
-    padding: 1rem;
+    padding: 2rem 0;
+    transform: rotate(-90deg);
+  }
+`;
 
-    svg {
-      font-size: 1.3rem;
-      cursor: pointer;
+const Switcher = styled(Switch)`
+  > div:nth-child(1) {
+    background: ${(props) => props.theme.colors.primary} !important;
+
+    > div:nth-child(1),
+    > div:nth-child(2) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      svg {
+        font-size: 1.3rem;
+        animation: rotating 10s linear infinite;
+
+        color: ${(props) => (props.checked ? "#f5c151" : "#333")};
+      }
+    }
+  }
+
+  .react-switch-handle {
+    background: ${(props) => props.theme.colors.primary_darker} !important;
+  }
+
+  @keyframes rotating {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
     }
   }
 `;
 
-export default Container;
+export { Container, Switcher };

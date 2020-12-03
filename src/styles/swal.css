@@ -1,5 +1,5 @@
 .swal2-popup.swal2-modal {
-  background-color: #3a3a4a;
+  background-color: var(--color-primary);
   width: auto;
   padding: 1rem;
   box-shadow: 2px 2px #1d1d29;
@@ -34,7 +34,7 @@
   width: auto;
   height: auto;
   padding: 8px 13px;
-  background: var(--color-primary);
+  background: var(--color-primary-darker);
   color: var(--color-secundary);
   margin-bottom: 0;
 }

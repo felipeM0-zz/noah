@@ -9,7 +9,7 @@ export const Container = styled.div`
   min-width: 320px;
 
   > div:nth-child(1) {
-    background-color: var(--color-primary-darker);
+    background-color: ${(props) => props.theme.colors.primary_darker};
     display: flex;
     flex-direction: column;
     padding: 2.5rem 3rem;

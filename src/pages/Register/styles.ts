@@ -8,16 +8,52 @@ export const Container = styled.div`
   overflow-x: hidden;
   background: var(--color-primary-darker);
 
+  > div:nth-child(1) {
+    padding: 1rem 2rem 0 2rem;
+    display: flex;
+    align-items: center;
+
+    button {
+      border: none;
+      outline: none;
+      background: none;
+      width: 200px;
+      height: 60px;
+      color: var(--color-secundary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+
+      span {
+        margin-left: 0.2rem;
+        font-size: 1.3rem;
+      }
+
+      svg {
+        margin-top: 0.2rem;
+        font-size: 2rem;
+      }
+
+      :hover {
+        svg {
+          animation: animArrowLeft 0.5s infinite ease;
+        }
+      }
+    }
+  }
+
   > p {
     font-size: 3rem;
     font-weight: bold;
-    color: rgba(255, 255, 255, 0.3);
+    color: var(--color-secundary);
     padding: 2rem 2rem 0 2rem;
     transition: all 0.3s;
+    text-align: center;
   }
 
-  > div:nth-child(2),
-  > div:nth-child(4) {
+  > div:nth-child(3),
+  > div:nth-child(5) {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -27,7 +63,7 @@ export const Container = styled.div`
     > div {
       min-width: 250px;
       border-radius: 4px;
-      background: #404040;
+      background: var(--color-primary);
       margin: 1rem;
       transition: all 0.3s;
 
@@ -79,11 +115,11 @@ export const Container = styled.div`
     }
   }
 
-  > div:nth-child(4) {
+  > div:nth-child(5) {
     padding-bottom: 0rem !important;
   }
 
-  > div:nth-child(5) {
+  > div:nth-child(6) {
     padding: 0rem 2rem 1rem;
     display: flex;
     justify-content: flex-end;
@@ -115,6 +151,10 @@ export const Container = styled.div`
 
       :hover {
         color: var(--color-secundary);
+
+        svg {
+          animation: animArrowRight 0.5s infinite ease;
+        }
       }
 
       :disabled {
@@ -267,8 +307,33 @@ export const Container = styled.div`
     }
   }
 
+  @keyframes animArrowLeft {
+    0% {
+      transform: translate(0, 0);
+    }
+    50% {
+      transform: translate(-10px, 0);
+    }
+    100% {
+      transform: translate(0, 0);
+    }
+  }
+
+  @keyframes animArrowRight {
+    0% {
+      transform: translate(0, 0);
+    }
+    50% {
+      transform: translate(10px, 0);
+    }
+    100% {
+      transform: translate(0, 0);
+    }
+  }
+
   @media (max-width: 768px) {
-    > div:nth-child(5) {
+    > div:nth-child(1),
+    > div:nth-child(6) {
       justify-content: center;
     }
 

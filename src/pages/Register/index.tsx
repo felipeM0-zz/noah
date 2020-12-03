@@ -4,11 +4,15 @@ import validator from "validator";
 // CONTEXTS
 import ContextRegister from "../../contexts/ContextRegister";
 // ICONS
-import { BsPencil, BsArrowRight } from "react-icons/bs";
+import { BsPencil, BsArrowRight, BsArrowLeft } from "react-icons/bs";
 // UTILS
 import ChooseInputModal from "./utils/inputsRegister";
 // DEFAULTS
-import { defaultCEP, defaultProp, defaultEmp } from "../../utils/defaults/defaultsRegister";
+import {
+  defaultCEP,
+  defaultProp,
+  defaultEmp,
+} from "../../utils/defaults/defaultsRegister";
 // ALERTS
 import { msgSuccess } from "../../utils/swalAlerts";
 // STYLES
@@ -37,6 +41,7 @@ const Register = () => {
       setDataCEP(defaultCEP);
       setButtonBool(true);
       setShowModal(false);
+      document.body.style.overflow = "auto";
     });
   };
 
@@ -58,6 +63,20 @@ const Register = () => {
 
   return (
     <Container>
+      <div>
+        <button
+          onClick={() => {
+            RegContext.setCliente({
+              prop: { ...defaultProp },
+              emp: { ...defaultEmp },
+            });
+            route.push("/");
+          }}
+        >
+          <BsArrowLeft />
+          <span>Retornar</span>
+        </button>
+      </div>
       <p>Sobre você...</p>
       <div>
         {Object.entries(RegProp).map((v, i) => {
@@ -69,6 +88,7 @@ const Register = () => {
                   onClick={() => {
                     setShowModal(true);
                     setDataModal([v[1].id, v[1].val, v[0], "prop"]);
+                    document.body.style.overflow = "hidden";
                   }}
                 />
               </div>

@@ -1,18 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 // COMPONENT
 import Header from "../../components/Header";
 import Sidebar from "../../components/Sidebar";
+import SideProfile from "../../components/SideProfile";
 // STYLES
 import { Container } from "./styles";
 
 const Main = () => {
+  const [showOptions, setShowOptions] = useState(false);
+
   return (
     <Container>
-      <Header />
+      <Header setShowOptions={(v) => setShowOptions(v)} />
       <Sidebar />
       <div id="content">
-        <h2>Access</h2>
+        <span>Access</span>
       </div>
+
+      {showOptions && <SideProfile setShowOptions={(v) => setShowOptions(v)} />}
     </Container>
   );
 };

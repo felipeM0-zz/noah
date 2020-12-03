@@ -101,15 +101,15 @@ export const Container = styled.div`
         border: none;
         outline: none;
         border-radius: 4px;
-        background: var(--color-primary);
-        border: 1px solid var(--color-secundary);
+        background: ${(props) => props.theme.colors.primary};
+        border: 1px solid ${(props) => props.theme.colors.primary_text};
         height: 3.3rem;
         cursor: pointer;
         transition: all 0.5s !important;
 
         span {
           font-weight: bold;
-          color: var(--color-secundary);
+          color: ${(props) => props.theme.colors.primary_text};
         }
 
         :active {

@@ -9,7 +9,7 @@ import { MdDirectionsBoat, MdNotifications } from "react-icons/md";
 // STYLES
 import { Container } from "./styles";
 
-const Header = () => {
+const Header = (props: { setShowOptions: (arg0: boolean) => void; }) => {
   const loc = useLocation().pathname;
 
   return (
@@ -25,7 +25,7 @@ const Header = () => {
             <span>Felipe Moreira</span>
             <span>Admin</span>
           </div>
-          <img src={ImgLogo} alt="Foto" />
+          <img src={ImgLogo} alt="Foto" onClick={() => props.setShowOptions(true)} />
         </div>
       </div>
       <div>
