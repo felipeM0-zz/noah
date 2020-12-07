@@ -2,13 +2,15 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   background: ${(props) => props.theme.colors.primary_darker};
-  position: fixed;
-  width: 100vw;
+  width: 100%;
   padding-left: 53.5px;
   height: 90px;
+  position: fixed;
+  top: 0;
   display: flex;
   flex-direction: column;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s;
 
   > div:nth-child(1) {
     display: flex;
@@ -79,5 +81,9 @@ export const Container = styled.div`
     align-items: center;
     padding: 0.5rem 0.5rem 0.5rem 2rem;
     justify-content: space-between;
+  }
+
+  @media (max-width: 768px) {
+    padding-left: 0px;
   }
 `;

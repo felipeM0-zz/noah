@@ -19,6 +19,8 @@ const GlobalStyle = createGlobalStyle`
     background-color: var(--color-primary);
     -webkit-tap-highlight-color: transparent;
     min-width: 320px;
+
+    transition: background-color .3s;
   }
   
   p,
@@ -27,6 +29,11 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+  }
+
+  ::-webkit-scrollbar {
+    width: 0px;
+    background-color: transparent;
   }
 
   input {

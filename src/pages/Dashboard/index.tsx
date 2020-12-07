@@ -6,15 +6,66 @@ import SideProfile from "../../components/SideProfile";
 // STYLES
 import { Container } from "./styles";
 
-const Main = (props: any) => {
+const Main = () => {
   const [showOptions, setShowOptions] = useState(false);
 
   return (
     <Container>
       <Header setShowOptions={(v) => setShowOptions(v)} />
       <Sidebar />
+
       <div id="content">
-        <span>Dashboard</span>
+        <p>AA</p>
+        <p>Dashboard</p>
+        <p>Dashboard</p>
+        <p>Dashboard</p>
+        <p>Dashboard</p>
+        <p>Dashboard</p>
+        <p>Dashboard</p>
+        <p>Dashboard</p>
+        <p>Dashboard</p>
+        <p>Dashboard</p>
+        <p>Dashboard</p>
+        <p>Dashboard</p>
+        <p>Dashboard</p>
+        <p>Dashboard</p>
+        <p>Dashboard</p>
+        <p>Dashboard</p>
+        <p>Dashboard</p>
+        <p>Dashboard</p>
+        <p>Dashboard</p>
+        <p>Dashboard</p>
+        <p>Dashboard</p>
+        <p>Dashboard</p>
+        <p>Dashboard</p>
+        <p>Dashboard</p>
+        <p>Dashboard</p>
+        <p>Dashboard</p>
+        <p>Dashboard</p>
+        <p>Dashboard</p>
+        <p>Dashboard</p>
+        <p>Dashboard</p>
+        <p>Dashboard</p>
+        <p>Dashboard</p>
+        <p>Dashboard</p>
+        <p>Dashboard</p>
+        <p>Dashboard</p>
+        <p>Dashboard</p>
+        <p>Dashboard</p>
+        <p>Dashboard</p>
+        <p>Dashboard</p>
+        <p>Dashboard</p>
+        <p>Dashboard</p>
+        <p>Dashboard</p>
+        <p>Dashboard</p>
+        <p>Dashboard</p>
+        <p>Dashboard</p>
+        <p>Dashboard</p>
+        <p>Dashboard</p>
+        <p>Dashboard</p>
+        <p>Dashboard</p>
+        <p>Dashboard</p>
+        <p>BBB</p>
       </div>
 
       {showOptions && <SideProfile setShowOptions={(v) => setShowOptions(v)} />}

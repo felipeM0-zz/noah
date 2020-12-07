@@ -105,7 +105,7 @@ export const Container = styled.div`
         border: 1px solid ${(props) => props.theme.colors.primary_text};
         height: 3.3rem;
         cursor: pointer;
-        transition: all 0.5s !important;
+        transition: all 0.3s !important;
 
         span {
           font-weight: bold;

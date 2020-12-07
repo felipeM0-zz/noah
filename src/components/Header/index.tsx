@@ -9,7 +9,7 @@ import { MdDirectionsBoat, MdNotifications } from "react-icons/md";
 // STYLES
 import { Container } from "./styles";
 
-const Header = (props: { setShowOptions: (arg0: boolean) => void; }) => {
+const Header = (props: { setShowOptions: (arg0: boolean) => void }) => {
   const loc = useLocation().pathname;
 
   return (

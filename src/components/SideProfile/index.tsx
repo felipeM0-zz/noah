@@ -9,7 +9,7 @@ import {
   MdPerson,
 } from "react-icons/md";
 // STYLES
-import Container from "./styles";
+import { Container } from "./styles";
 
 const SideProfile = (props: { setShowOptions: (arg0: boolean) => void }) => {
   const closeOptions = () => {

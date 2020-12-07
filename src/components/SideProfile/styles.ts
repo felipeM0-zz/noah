@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-const Container = styled.div`
-  height: 100vh;
-  width: 100vw;
+export const Container = styled.div`
+  height: 100%;
+  width: 100%;
   position: fixed;
   top: 0;
   bottom: 0;
@@ -18,11 +18,12 @@ const Container = styled.div`
     border-left: 1px solid rgba(255, 255, 255, 0.2);
     display: flex;
     flex-direction: column;
+    transition: all 0.3s;
 
-    animation: slideOut 0.6s forwards;
+    animation: slideOutSideProf 0.6s forwards;
 
     &.active {
-      animation: slideIn 0.6s forwards;
+      animation: slideInSideProf 0.6s forwards;
     }
 
     > div {
@@ -57,31 +58,29 @@ const Container = styled.div`
         padding: 0.2rem;
       }
     }
-  }
 
-  @keyframes slideIn {
-    0% {
-      right: -230px;
+    @keyframes slideInSideProf {
+      0% {
+        right: -230px;
+      }
+      60% {
+        right: 0px;
+      }
+      100% {
+        right: -20px;
+      }
     }
-    60% {
-      right: 0px;
-    }
-    100% {
-      right: -20px;
-    }
-  }
 
-  @keyframes slideOut {
-    0% {
-      right: -20px;
-    }
-    60% {
-      right: 0px;
-    }
-    100% {
-      right: -230px;
+    @keyframes slideOutSideProf {
+      0% {
+        right: -20px;
+      }
+      60% {
+        right: 0px;
+      }
+      100% {
+        right: -230px;
+      }
     }
   }
 `;
-
-export default Container;

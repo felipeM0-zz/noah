@@ -3,9 +3,11 @@ import Switch from "react-switch";
 
 const Container = styled.div`
   width: 53px;
-  height: 100vh;
+  height: 100%;
   background: var(--color-primary-darker);
+  transition: all 0.3s;
   position: fixed;
+  top: 0;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -44,6 +46,19 @@ const Container = styled.div`
   > div:nth-child(2) {
     padding: 2rem 0;
     transform: rotate(-90deg);
+  }
+
+  @keyframes slideOutSide {
+    from {
+      transform: translate(0, 0);
+    }
+    to {
+      transform: translate(-54px, 0);
+    }
+  }
+
+  @media (max-width: 768px) {
+    animation: slideOutSide 0.3s forwards;
   }
 `;
 

@@ -37,7 +37,7 @@ export const Container = styled.div`
 
       :hover {
         svg {
-          animation: animArrowLeft 0.5s infinite ease;
+          animation: animArrowLeft 0.3s infinite ease;
         }
       }
     }
@@ -137,7 +137,7 @@ export const Container = styled.div`
       justify-content: center;
       color: rgba(255, 255, 255, 0.5);
       cursor: pointer;
-      transition: all 0.5s;
+      transition: all 0.3s;
 
       span {
         margin-right: 0.2rem;
@@ -153,7 +153,7 @@ export const Container = styled.div`
         color: var(--color-secundary);
 
         svg {
-          animation: animArrowRight 0.5s infinite ease;
+          animation: animArrowRight 0.3s infinite ease;
         }
       }
 
@@ -208,7 +208,7 @@ export const Container = styled.div`
             overflow: hidden;
             -webkit-box-orient: vertical;
             transform: translate(-100px, 0);
-            animation: slideCEP 0.5s forwards;
+            animation: slideCEP 0.3s forwards;
           }
         }
 
